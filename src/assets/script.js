@@ -34,7 +34,7 @@ setInterval(() => {
   );
 
   if (cactoLeft > 40 && cactoLeft < 150 && banguelaBottom <= 0 && !alreadyJump) {
-    alert(`Banguela morreu! Seu recorde foi: ${count}`);
+    alert(`Banguela faleceu... Seu recorde foi: ${count}`);
     count = 0;  // Resetar o score após a morte
     score.innerHTML = `Recorde: ${count}`;
   }
