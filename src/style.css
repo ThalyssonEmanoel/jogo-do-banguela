@@ -30,7 +30,7 @@ body {
 .banguela {
   position: absolute;
   bottom: 0;
-  background-image: url(/jogo-do-banguela/src/img/banguela.gif);
+  background-image: url('img/banguela.gif');
   width: 280px;
   height: 200px;
   background-size: 280px;
@@ -39,14 +39,14 @@ body {
 }
 
 .banguela.jump {
-  background-image: url('/jogo-do-banguela/src/img/dragvoador-removebg-preview.png'); 
+  background-image: url('img/dragvoador-removebg-preview.png'); 
   transform: scaleX(-1);
 }
 
 .cacto {
   position: absolute;
   bottom: 0;
-  background-image: url(/jogo-do-banguela/src/img/cacto.png);
+  background-image: url('img/cacto.png');
   width: 35px;
   height: 70px;
   background-size: 35px;
