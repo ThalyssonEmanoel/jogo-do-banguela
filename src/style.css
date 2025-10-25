@@ -10,6 +10,15 @@ body {
   justify-content: center;
   align-items: center;
   background-color: #f7f7f7;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #2c3e50;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
 }
 
 .game {
@@ -24,7 +33,9 @@ body {
   position: absolute;
   top: 30px;
   left: 0;
-  font-size: x-large;
+  padding: 0 16px;
+  font-size: 1.4rem;
+  font-weight: 600;
 }
 
 .banguela {
@@ -52,6 +63,7 @@ body {
   background-size: 35px;
   background-repeat: no-repeat;
   animation: cacto 3s linear infinite;
+  animation-play-state: running;
 }
 
 @keyframes cacto {
@@ -61,6 +73,39 @@ body {
   100% {
     right: 850px;
   }
+}
+
+.restart {
+  padding: 10px 26px;
+  border-radius: 999px;
+  border: none;
+  background: black;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.restart:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(63, 163, 122, 0.25);
+}
+
+.restart:focus {
+  outline: 3px solid rgba(90, 193, 142, 0.4);
+  outline-offset: 2px;
+}
+
+.status {
+  min-height: 24px;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.hint {
+  font-size: 0.95rem;
+  color: #607d8b;
 }
 
 .jump {
