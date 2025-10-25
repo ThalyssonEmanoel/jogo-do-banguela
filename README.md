@@ -10,7 +10,7 @@ Este projeto web é apenas em front-end e é inspirado em um joguinho, o qual po
 
 ## Propósito da Aplicação
 
-O obejtivo desse jogo é você não deixar o banguela falecer para um cacto.
+O objetivo desse jogo é você não deixar o banguela falecer para um cacto.
 
 ## Estrutura do Projeto
 
