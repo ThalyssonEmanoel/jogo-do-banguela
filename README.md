@@ -1,48 +1,38 @@
-# Projeto de API Simples em Node.js com Docker
+# Jogo do Banguela
 
-## Descrição do Projeto
+Este sistema web é apenas um front-end e é inspirado em um joguinho, o qual possui um protagonista  que pula cactos "O dinossauro do google", nesse caso, o BANGUELA.
 
-Este projeto web é apenas em front-end e é inspirado em um joguinho, o qual possui um protagonista  que pula cactos "O dinossauro do google", o projeto tem como objetivo demonstrar a utilização da ferramenta docker, fora as outras como html, javascript e css...
+## Estrutura do projeto
 
-## Aplicação em Execução
+- `src/index.html`: página principal com a integração do framework Vue.
+- `src/style.css`: estilos do jogo.
+- `src/script.js`: lógica do jogo usando Composition API do Vue.
+- `src/img/`: imagens utilizadas.
+- `Dockerfile`: imagem Nginx que serve os arquivos estáticos da pasta `src`.
+- `docker-compose.yaml`: orquestra o contêiner localmente expondo a porta 8080.
+- `vercel.json`: configuração de deploy estático na Vercel (apontando para os arquivos em `src/`).
 
-![imagem](jogo-do-banguela/img/image.png)
+## Como rodar localmente
 
-## Propósito da Aplicação
+```bash
+docker compose up --build
+```
+`http://localhost:8080`
 
-O objetivo desse jogo é você não deixar o banguela falecer para um cacto.
+ou
 
-## Estrutura do Projeto
+```bash
+docker build -t jogo-banguela:latest .
+docker run --rm -p 8080:80 jogo-banguela:latest
+```
 
-- *img*: Essa pasta contém todas as imagens.
-- *index.html*: É a página.
-- *script*: É o que permite ter o sistema de pontuação, fazer o banguela andar e pular.
-- *style.css*: Estiliza a página.
+## Deploy na Vercel
+O arquivo `vercel.json` já aponta o diretório `src` como origem dos arquivos estáticos. Para publicar:
 
-## Instruções para Execução
+```bash
+vercel --prod
+```
 
-### Requisitos
-
-- Ter o docker instaldo.
-
-
-## Link para DockerHub
-
-https://hub.docker.com/repository/docker/krauzzer/api-node-docker/general
-
-## Dockerfile
-
-O `Dockerfile` utilizado para criar a imagem Docker da aplicação contém as seguintes instruções:
-
-FROM nginx:alpine
-COPY . /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
-
-## Executando
-
-- Puxe o container: `docker pull jogo-do-banguela`;
-- Rode o docker: `docker run -d -p 8080:80 jogo-do-banguela`
-- Abra seu navegador e vá para `http://localhost:8080` para verificar se os arquivos estão sendo servidos corretamente.
-
-
+Na primeira execução a CLI pedirá algumas confirmações:
+- defina o diretório raiz como o repositório atual;
+- quando questionado pelo diretório de saída, informe `src`.
