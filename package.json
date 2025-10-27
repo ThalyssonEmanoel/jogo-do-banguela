@@ -1,0 +1,19 @@
+{
+  "name": "jogo-do-banguela",
+  "version": "1.0.0",
+  "description": "Projeto dedicado a criação de um jogo web com vue.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThalyssonEmanoel/jogo-do-banguela.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ThalyssonEmanoel/jogo-do-banguela/issues"
+  },
+  "homepage": "https://github.com/ThalyssonEmanoel/jogo-do-banguela#readme"
+}

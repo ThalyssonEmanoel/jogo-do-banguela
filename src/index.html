@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,12 +8,26 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="game">
-    <span class="score"></span>
-    <div class="banguela"></div>
-    <div class="cacto"></div>
+  <div id="app">
+    <div class="game">
+      <span class="score">{{ scoreLabel }}</span>
+      <h2 class="warning-title" v-if="shouldShowWarning">Não deixe o banguela falecer!</h2>
+      
+      <!-- Boss aparece a partir de 20 pontos -->
+      <div class="boss" v-if="showBoss" ref="bossRef"></div>
+      
+      <div class="banguela" :class="{ jump: isJumping, duck: isDucking }" ref="banguelaRef"></div>
+      <div class="obstacle cacto" ref="cactoRef"></div>
+      <div class="obstacle rammus" ref="rammusRef"></div>
+      <div class="obstacle bola-fogo" ref="bolaFogoRef"></div>
+    </div>
+
+    <button class="restart" @click="resetGame" v-if="isGameOver">Recomeçar</button>
+    <p class="status" v-if="statusMessage">{{ statusMessage }}</p>
+    <p class="hint">Use a seta para cima ou a barra de espaço para pular. Use a seta para baixo para abaixar.</p>
   </div>
 
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
