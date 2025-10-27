@@ -36,6 +36,33 @@ body {
   padding: 0 16px;
   font-size: 1.4rem;
   font-weight: 600;
+  z-index: 10;
+}
+
+.warning-title {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  font-weight: 700;
+  color: #000000;
+  text-align: center;
+  animation: fadeIn 0.8s ease-in-out forwards;
+  opacity: 0;
+  z-index: 10;
+  white-space: nowrap;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
 }
 
 .banguela {
@@ -47,6 +74,7 @@ body {
   background-size: 280px;
   background-repeat: no-repeat;
   transform: scaleX(-1);
+  transition: height 0.1s ease, background-size 0.1s ease;
 }
 
 .banguela.jump {
@@ -54,24 +82,79 @@ body {
   transform: scaleX(-1);
 }
 
-.cacto {
-  position: absolute;
-  bottom: 0;
-  background-image: url('img/rammus.jpeg');
-  width: 35px;
-  height: 70px;
-  background-size: 35px;
-  background-repeat: no-repeat;
-  animation: cacto 3s linear infinite;
-  animation-play-state: running;
+.banguela.fast-fall {
+  animation: fastFall 0.2s ease-in forwards !important;
 }
 
-@keyframes cacto {
+.banguela.duck {
+  height: 50px;
+  background-size: 280px 50px;
+}
+
+.obstacle {
+  position: absolute;
+  bottom: 0;
+  background-repeat: no-repeat;
+  left: 820px;
+  display: none;
+}
+
+.obstacle.active {
+  display: block;
+}
+
+.cacto {
+  background-image: url('img/cacto.png');
+  width: 60px;
+  height: 70px;
+  background-size: 60px 70px;
+}
+
+.rammus {
+  background-image: url('img/rammus.jpeg');
+  width: 80px;
+  height: 80px;
+  background-size: 80px 80px;
+}
+
+.bola-fogo {
+  background-image: url('img/bola-fogo.jpeg');
+  width: 70px;
+  height: 60px;
+  background-size: 70px 60px;
+}
+
+.boss {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background-image: url('img/boss.jpeg');
+  width: 150px;
+  height: 150px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  z-index: 5;
+  animation: bossAppear 0.5s ease-in-out;
+}
+
+@keyframes bossAppear {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes obstacle-move {
   0% {
-    right: -20px;
+    left: 820px;
   }
   100% {
-    right: 850px;
+    left: -120px;
   }
 }
 
@@ -130,6 +213,12 @@ body {
   }
 
   100% {
+    bottom: 0;
+  }
+}
+
+@keyframes fastFall {
+  to {
     bottom: 0;
   }
 }

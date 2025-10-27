@@ -11,13 +11,20 @@
   <div id="app">
     <div class="game">
       <span class="score">{{ scoreLabel }}</span>
-      <div class="banguela" :class="{ jump: isJumping }" ref="banguelaRef"></div>
-      <div class="cacto" ref="cactoRef"></div>
+      <h2 class="warning-title" v-if="shouldShowWarning">Não deixe o banguela falecer!</h2>
+      
+      <!-- Boss aparece a partir de 20 pontos -->
+      <div class="boss" v-if="showBoss" ref="bossRef"></div>
+      
+      <div class="banguela" :class="{ jump: isJumping, duck: isDucking }" ref="banguelaRef"></div>
+      <div class="obstacle cacto" ref="cactoRef"></div>
+      <div class="obstacle rammus" ref="rammusRef"></div>
+      <div class="obstacle bola-fogo" ref="bolaFogoRef"></div>
     </div>
 
     <button class="restart" @click="resetGame" v-if="isGameOver">Recomeçar</button>
     <p class="status" v-if="statusMessage">{{ statusMessage }}</p>
-    <p class="hint">Use a seta para cima ou a barra de espaço para pular.</p>
+    <p class="hint">Use a seta para cima ou a barra de espaço para pular. Use a seta para baixo para abaixar.</p>
   </div>
 
   <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
