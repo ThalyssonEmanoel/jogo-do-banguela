@@ -13,9 +13,8 @@
       <span class="score">{{ scoreLabel }}</span>
       <h2 class="warning-title" v-if="shouldShowWarning">Não deixe o banguela falecer!</h2>
       
-      <!-- Boss aparece a partir de 20 pontos -->
+      <!-- Boss 20 pontos -->
       <div class="boss" v-if="showBoss" ref="bossRef"></div>
-      
       <div class="banguela" :class="{ jump: isJumping, duck: isDucking }" ref="banguelaRef"></div>
       <div class="obstacle cacto" ref="cactoRef"></div>
       <div class="obstacle rammus" ref="rammusRef"></div>

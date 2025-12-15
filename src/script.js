@@ -20,6 +20,30 @@ createApp({
     let rammusSpawnTimeoutId = null;
     let bolaFogoSpawnTimeoutId = null;
 
+    const bgMusic = new Audio('audio/Pokemon Black & White Music_ Driftveil City Music.mp3');
+    bgMusic.loop = true;
+    const bossMusic = new Audio('audio/Doom.mp3');
+    bossMusic.loop = true;
+
+    const playBgMusic = () => {
+      bossMusic.pause();
+      bossMusic.currentTime = 0;
+      bgMusic.play().catch(e => console.log("Audio play failed", e));
+    };
+
+    const playBossMusic = () => {
+      bgMusic.pause();
+      bgMusic.currentTime = 0;
+      bossMusic.play().catch(e => console.log("Audio play failed", e));
+    };
+
+    const stopAllMusic = () => {
+      bgMusic.pause();
+      bgMusic.currentTime = 0;
+      bossMusic.pause();
+      bossMusic.currentTime = 0;
+    };
+
     const BASE_SPEED = 3000;
     const RAMMUS_SPEED_MULTIPLIER = 1.5;
     const BOLA_FOGO_SPEED_MULTIPLIER = 1.8;
@@ -214,6 +238,7 @@ createApp({
 
     const handleGameOver = () => {
       isGameOver.value = true;
+      stopAllMusic();
       statusMessage.value = `Banguela faleceu... Seu recorde foi: ${currentScore.value}`;
       currentScore.value = 0;
       stopCollisionLoop();
@@ -254,6 +279,10 @@ createApp({
         return;
       }
 
+      if (currentScore.value === 0 && bgMusic.paused && bossMusic.paused) {
+        playBgMusic();
+      }
+
       isJumping.value = true;
       currentScore.value += 1;
       
@@ -266,6 +295,7 @@ createApp({
       
       // Quando alcança 20 pontos, spawna o boss e bolas de fogo
       if (currentScore.value === 20) {
+        playBossMusic();
         // Não cancela o rammus imediatamente, deixa terminar a animação
         // A bola de fogo só começa depois que o rammus atual terminar
       }
@@ -328,6 +358,9 @@ createApp({
       statusMessage.value = "";
       currentScore.value = 0;
       isDucking.value = false;
+      
+      stopAllMusic();
+      playBgMusic();
       
       if (cactoSpawnTimeoutId) {
         clearTimeout(cactoSpawnTimeoutId);
