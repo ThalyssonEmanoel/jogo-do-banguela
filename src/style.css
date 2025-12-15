@@ -124,6 +124,37 @@ body {
   background-size: 70px 60px;
 }
 
+.passarinho {
+  background-image: url('img/passarinho-irritado-removebg-preview.png');
+  width: 60px;
+  height: 45px;
+  background-size: contain;
+  bottom: 120px;
+  transform: scaleX(-1);
+}
+
+.projetil {
+  position: absolute;
+  display: none;
+  width: 40px;
+  height: 40px;
+  background-image: url('img/bola-fogo.jpeg');
+  background-size: cover;
+  border-radius: 50%;
+  z-index: 6;
+}
+
+@keyframes projectile-move {
+  from {
+    left: 100px;
+    bottom: 50px;
+  }
+  to {
+    left: 700px;
+    bottom: 100px;
+  }
+}
+
 .boss {
   position: absolute;
   right: 0;
